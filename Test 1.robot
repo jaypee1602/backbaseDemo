@@ -13,47 +13,34 @@ Test Teardown     Close current browser
 
 *** Variables ***
 ${URL}                          http://computer-database.herokuapp.com/computers
-${BROWSER}                      Chrome
+${BROWSER}                      IE
 ${computerName1}                Lenovo p52
-${introDate1}                   08-07-2019
-${discontinueDate1}             15-07-2024
+${introDate1}                   2019-07-08
+${discontinueDate1}             2024-07-15
 ${company1}                     Samsung Electronics
 ${computerName2}                HP X1
-${introDate2}                   1-1-2008
-${discontinueDate2}             1-1-2012
+${introDate2}                   2008-1-1
+${discontinueDate2}             2012-1-1
 ${company2}                     Samsung Electronics
-${computerName2Edited}          Macbook
-${introDate2Edited}             1-12-20016
-${discontinueDate2Edited}       1-1-2019
+${computerName2Edited}          Testcomputer
+${introDate2Edited}             2016-12-01
+${discontinueDate2Edited}       2019-1-1
 ${computerNamex}                XXXX
 ${computerSpecialCharacter}     Ðíäĸřìéŧên & $p€cial€ t€k€n$ met ÁΠĪ’s
 
 *** Test Cases ***
-Test Case 1: Navigate to Landingpage
-    [Tags]  Happyflow
-    [Documentation]  Navigate and validate computer database gui
-    ...  Precondition:
-    ...  Webbrowser must be installed on device
-    ...
-    ...  Expected result:
-    ...  Homepage of http://computerdatabase.herokuapp.com/computers is visible
-    ...
-    ...  Test steps:
-    Open browser
-    Navigate to provided url
-
-Test Case 2: Verify elements on landingspage
+Test Case 1: Verify elements on landingspage
     [Tags]  Happyflow
     [Documentation]  Verifiying elements on initial landingspage
     ...  Precondition:
-    ...  Homepage of http://computerdatabase.herokuapp.com/computers is visible
+    ...  Browser variable and url are set
     ...
     ...  Expected result:
+    ...  Homepage of http://computerdatabase.herokuapp.com/computers is visible
     ...  All of the elements on the homepage are visible
     ...
     ...  Test steps:
-    Open browser
-    Navigate to provided url
+    Open browser and navigate to provided url
     Verify header
     Verify title
     Verify searchbox
@@ -61,7 +48,7 @@ Test Case 2: Verify elements on landingspage
     Verify add computer button
     Verify pagination
 
-Test Case 3: Create new computers
+Test Case 2: Create new computers
     [Tags]  Happyflow  Create
     [Documentation]  Testing the happy flow of adding a new computer
     ...  Precondition:
@@ -71,8 +58,7 @@ Test Case 3: Create new computers
     ...  Computer is added to database
     ...
     ...  Test steps:
-    Open browser
-    Navigate to provided url
+    Open browser and navigate to provided url
     Click 'Add a new computer' button
     Verify add a computer page
     Verify input fields
@@ -90,7 +76,7 @@ Test Case 3: Create new computers
     Click create computer
     Verify created computer 2 message
 
-Test Case 4: Verify created computer 1
+Test Case 3: Verify created computer 1
     [Tags]   Happyflow  Read
     [Documentation]  Checking the first added computer
     ...  Precondition:
@@ -101,15 +87,14 @@ Test Case 4: Verify created computer 1
     ...  Computer is visible in database after search
     ...
     ...  Test steps:
-    Open browser
-    Navigate to provided url
+    Open browser and navigate to provided url
     Type computername 1 into searchfield
     Click "Filter by name"
     Verify result computer 1
     Click computer 1
-    Verify result computer 1
+    Veryfy input fields computer 1
 
-Test Case 5: Delete created computer 1
+Test Case 4: Delete created computer 1
     [Tags]   Happyflow  Delete
     [Documentation]  Deleting the first added computer
     ...  Precondition:
@@ -120,8 +105,7 @@ Test Case 5: Delete created computer 1
     ...  Computer is visible in database after search
     ...
     ...  Test steps:
-    Open browser
-    Navigate to provided url
+    Open browser and navigate to provided url
     Type computername 1 into searchfield
     Click "Filter by name"
     Verify result computer 1
@@ -129,7 +113,7 @@ Test Case 5: Delete created computer 1
     Delete computer 1
     Verify delete message
 
-Test Case 6: Edit computer 2 valid
+Test Case 5: Edit computer 2 valid
     [Tags]   Happyflow  Edit
     [Documentation]  Editing the second computer with different values
     ...  Precondition:
@@ -140,8 +124,7 @@ Test Case 6: Edit computer 2 valid
     ...  Edited values are saved to database
     ...
     ...  Test steps:
-    Open browser
-    Navigate to provided url
+    Open browser and navigate to provided url
     Type computername 2 into searchfield
     Click "Filter by name"
     Verify result computer 2
@@ -150,7 +133,7 @@ Test Case 6: Edit computer 2 valid
     Click save this computer
     Verify edited computer
 
-Test Case 7: Edit computer 2 same values
+Test Case 6: Edit computer 2 same values
     [Tags]   Sadflow  Edit
     [Documentation]  Editing the second computer with same values
     ...  Precondition:
@@ -161,17 +144,16 @@ Test Case 7: Edit computer 2 same values
     ...  Message containing nothing has been changed
     ...
     ...  Test steps:
-    Open browser
-    Navigate to provided url
-    Type computername 2 into searchfield
+    Open browser and navigate to provided url
+    Type computername 2 edited into searchfield
     Click "Filter by name"
-    Verify result computer 2
-    Click computer 2
+    Verify result computer 2 edited
+    Click computer 2 edited
     Edit computer 2 fields
     Click save this computer
     Verify edited computer
 
-Test Case 8: Search non-existing computer
+Test Case 7: Search non-existing computer
     [Tags]   Sadflow  Edit
     [Documentation]  Filter a computer that does not exist
     ...  Precondition:
@@ -182,13 +164,12 @@ Test Case 8: Search non-existing computer
     ...  Error message with no computers found
     ...
     ...  Test steps:
-    Open browser
-    Navigate to provided url
+    Open browser and navigate to provided url
     Type computername x into searchfield
     Click "Filter by name"
     Verify error message
 
-Test Case 9: Testing input fields exeptions
+Test Case 8: Testing input fields exeptions
      [Tags]   Sadflow  exeptions
     [Documentation]  Testing input fields
     ...  Precondition:
@@ -198,15 +179,14 @@ Test Case 9: Testing input fields exeptions
     ...  Error message when the requirements of fields have been met
     ...
     ...  Test steps:
-    Open browser
-    Navigate to provided url
+    Open browser and navigate to provided url
     Click 'Add a new computer' button
     Verify required fields
     Verify invalid date introduced date
     Verify invalid date discontinue date
     Verify valid indtroduced and invalid discontinue date
 
-Test Case 10: Verify special characters
+Test Case 9: Verify special characters
     [Tags]   Sadflow  exeptions
     [Documentation]  Testing input fields for special characters
     ...  Precondition:
@@ -216,15 +196,14 @@ Test Case 10: Verify special characters
     ...  New computer is added with special characters
     ...
     ...  Test steps:
-    Open browser
-    Navigate to provided url
+    Open browser and navigate to provided url
     Click 'Add a new computer' button
     Fill in computername special charaters
     Click create computer
-    Verify created computer special message
+    Verify creater computer special message
 
-Test Case 11: Delete all added computers
-    [Tags]   Reset
+Test Case 10: Delete all added computers
+    [Tags]   Reset  test1
     [Documentation]  Resets database to previous state
     ...  Precondition:
     ...  The computers in this tests have been added
@@ -233,25 +212,22 @@ Test Case 11: Delete all added computers
     ...  The computers in this tests will be removed
     ...
     ...  Test steps:
-    Open browser
-    Navigate to provided url
+    Open browser and navigate to provided url
     Delete all added computers
 
 
 *** Keywords ***
-Open browser
-    [Documentation]   This keyword creates a webdriver with provided webbrowser
-    [Arguments]    ${alias}=${EMPTY}
-    ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
-    Call Method    ${options}    add_argument    disable-web-security
-    Call Method    ${options}    add_argument    disable-infobars
-    Create WebDriver    Chrome    alias=${alias}    chrome_options=${options}
+Open browser and navigate to provided url
+    Open browser  ${URL}   ${BROWSER}
+#    [Documentation]   This keyword creates a webdriver with provided webbrowser
+#    [Arguments]    ${alias}=${EMPTY}
+#    ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+#    Call Method    ${options}    add_argument    disable-web-security
+#    Call Method    ${options}    add_argument    disable-infobars
+#    Create WebDriver    Chrome    alias=${alias}    chrome_options=${options}
 
 Close current browser
     SeleniumLibrary.Close Browser
-
-Navigate to provided url
-    Go To    ${URL}
 
 Verify header
     SeleniumLibrary.Page should contain element   //*[@class="topbar"]//*[contains(text(),"Play sample application — Computer database")]
@@ -312,7 +288,6 @@ Fill in discontinue 1 date
 
 Fill in company 1 name
     Click element    id=company
-    Scroll Element into view   //*[@id="company"]/option[43]
     Click element    //*[contains(text(),"Samsung Electronics")]
     Sleep  1s
 
@@ -321,7 +296,8 @@ Click create computer
     Sleep  1s
 
 Verify created computer 1 message
-    Page should contain element  //*[@class="alert-message warning"]//*[contains(text(),"${computerName1}")]
+    #Page should contain element  //*[@id="main"]//*[contains(text()," Computer ${computerName1} has been created")]
+    Element should contain   //*[@id="main"]/div[1]   Computer ${computerName1} has been created
 
 Fill in computer 2 name
     Input text   id=name  ${computerName2}
@@ -337,12 +313,12 @@ Fill in discontinue 2 date
 
 Fill in company 2 name
     Click element    id=company
-    Scroll Element into view   //*[@id="company"]/option[43]
     Click element    //*[contains(text(),"Samsung Electronics")]
     Sleep  1s
 
 Verify created computer 2 message
-    Page should contain element  //*[@class="alert-message warning"]//*[contains(text(),"${computerName2}")]
+    #Page should contain element  //*[@class="alert-message warning"]//strong[contains(text()," Computer ${computerName2} has been created")]
+    Element should contain   //*[@id="main"]/div[1]   Computer ${computerName2} has been created
 
 Type computername 1 into searchfield
     Input text   id=searchbox   ${computerName1}
@@ -350,6 +326,10 @@ Type computername 1 into searchfield
 
 Type computername 2 into searchfield
     Input text   id=searchbox   ${computerName2}
+    Sleep  1s
+
+Type computername 2 edited into searchfield
+    Input text   id=searchbox   ${computerName2Edited}
     Sleep  1s
 
 Click "Filter by name"
@@ -364,6 +344,10 @@ Verify result computer 2
     Page should contain       ${computerName2}
     Sleep  1s
 
+Verify result computer 2 edited
+    Page should contain       ${computerName2Edited}
+    Sleep  1s
+
 Click computer 1
     Click element   //*[contains(text(),"${computerName1}")]
     Sleep  1s
@@ -372,28 +356,34 @@ Click computer 2
     Click element   //*[contains(text(),"${computerName2}")]
     Sleep  1s
 
-Veryfy input fields computer 1
-    Element text should be   id=name  ${computerName1}
-    Element text should be   id=introduced  ${introDate1}
-    Element text should be   id=discontinued  ${discontinueDate1}
-    Element text should be   id=company   Samsung Electronics
+Click computer 2 edited
+    Click element   //*[contains(text(),"${computerName2Edited}")]
     Sleep  1s
+
+Veryfy input fields computer 1
+    ${name}  Get element attribute   id=name   value
+    should be equal as strings    ${name}   ${computerName1}
+    ${intro}  Get element attribute  id=introduced  value
+    should be equal as strings    ${intro}   ${introDate1}
+    ${discontinue}  Get element attribute  id=discontinued  value
+    should be equal as strings    ${discontinue}   ${discontinueDate1}
+    ${company}  Get element attribute  id=company  value
+    should be equal    ${company}   43
 
 Delete computer 1
     Click element   //*[@class="btn danger"]
 
 Verify delete message
-    Page should contain element   //*[@class="alert-message warning"]//*[contains(text()," Computer has been deleted")]
+    Element should contain   //*[@id="main"]/div[1]  Done! Computer has been deleted
 
 Edit computer 2 fields
     Input text   id=name  ${computerName2Edited}
     Sleep  1s
-    Input text   id=introduced  ${introDate2Edited}}
+    Input text   id=introduced  ${introDate2Edited}
     Sleep  1s
     Input text   id=discontinued  ${discontinueDate2Edited}
     Sleep  1s
     Click element    id=company
-    Scroll Element into view   //*[@id="company"]/option[15]
     Click element    //*[contains(text(),"Canon")]
     Sleep  1s
 
@@ -402,55 +392,63 @@ Click save this computer
     Sleep  1s
 
 Verify edited computer
-     Page should contain element  //*[@class="alert-message warning"]//*[contains(text()," Computer ${computerName2Edited} has been updated")]
+     Element should contain   //*[@id="main"]/div[1]   Computer ${computerName2Edited} has been updated
 
 Type computername x into searchfield
     Input text   id=searchbox   ${computerNamex}
     Sleep  1s
 
 Verify error message
-     Page should contain element   //*[@id="main"]//*[contains(text()," No computers found")]
-     Page should contain element   //*[@class="well"]//*[contains(text()," Nothing to display")]
+     Element should contain   //*[@id="main"]/h1   No computers found
+     Element should contain   //*[@id="main"]/div[2]   Nothing to display
 
 Verify required fields
     Click create computer
     Page should contain element   //*[@class="clearfix error"]//*[contains(text(),"Required")]
 
+
 Verify invalid date introduced date
     Input text   id=introduced   000000
     Click create computer
-    Page should contain element   //*[@class="clearfix error"]//*[contains(text(),"Date ('yyyy-MM-dd')")]
+    Page should contain element   //*[@class="clearfix error"]//*[@id="introduced"]
 
 Verify invalid date discontinue date
     Input text   id=discontinued   xxxxxxx
     Click create computer
-    Page should contain element   //*[@class="clearfix error"]//*[contains(text(),"Date ('yyyy-MM-dd')")]
+    Page should contain element   //*[@class="clearfix error"]//*[@id="discontinued"]
 
 Verify valid indtroduced and invalid discontinue date
     Clear Element Text   id=introduced
-    Page should not contain element   //*[@class="clearfix error"]//*[contains(text(),"Date ('yyyy-MM-dd')")]
+    Input text   id=introduced   2019-12-12
+    Click create computer
+    Page should not contain element   //*[@class="clearfix error"]//*[@id="introduced"]
+    Page should contain element   //*[@class="clearfix error"]//*[@id="discontinued"]
 
 Fill in computername special charaters
     Input text   id=name  ${computerSpecialCharacter}
 
-Verify created computer special message
-    Page should contain element   //*[@class="alert-message warning"]//*[contains(text()," Computer ${computerSpecialCharacter} has been deleted")]
+Search computername special charaters
+    Input text   id=searchbox  ${computerSpecialCharacter}
+
+Verify creater computer special message
+    Element should contain   //*[@id="main"]/div[1]  Done! Computer ${computerSpecialCharacter} has been created
 
 Click delete and verify message
     Click element  //*[@class="btn danger"]
-    Page should contain element   //*[@class="alert-message warning"]//*[contains(text()," has been deleted")]
+    Sleep  1s
+    Element should contain   //*[@id="main"]/div[1]  Done! Computer has been deleted
+    Sleep  1s
 
 Click computer with special characters
     Click element   //*[contains(text(),"${computerSpecialCharacter}")]
     Sleep  1s
 
 Delete all added computers
-    Type computername 2 into searchfield
+    Type computername 2 edited into searchfield
     Click "Filter by name"
-    Click computer 2
+    Click computer 2 edited
     Click delete and verify message
-    Sleep  0.5s
-    Fill in computername special charaters
+    Search computername special charaters
     Click "Filter by name"
     Click computer with special characters
     Click delete and verify message
