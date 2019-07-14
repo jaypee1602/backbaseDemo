@@ -1,1981 +1,219 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 3.1.2 (Python 3.7.3 on win32)" generated="20190711 22:08:43.221" rpa="false">
-<suite id="s1" name="Test 1" source="C:\Users\MoriRyan\PycharmProjects\demoBackbase\Test 1.robot">
-<test id="s1-t1" name="Test Case 1: Verify elements on landingspage">
-<kw name="Open browser and navigate to provided url">
-<kw name="Open Browser" library="SeleniumLibrary">
-<doc>Opens a new browser instance to the given ``url``.</doc>
+<robot generator="Robot 3.1.2 (Python 3.7.3 on win32)" generated="20190714 21:05:57.395" rpa="false">
+<suite id="s1" name="Test Suite 1" source="C:\Users\MoriRyan\PycharmProjects\demoBackbase\Test Suite 1.robot">
+<test id="s1-t1" name="Test Case 0: Check device">
+<kw name="Run" library="OperatingSystem">
+<doc>Runs the given command in the system and returns the output.</doc>
 <arguments>
-<arg>${URL}</arg>
-<arg>${BROWSER}</arg>
-</arguments>
-<msg timestamp="20190711 22:08:43.416" level="INFO">Opening browser 'IE' to base url 'http://computer-database.herokuapp.com/computers'.</msg>
-<status status="PASS" starttime="20190711 22:08:43.416" endtime="20190711 22:08:44.987"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:08:43.416" endtime="20190711 22:08:44.987"></status>
-</kw>
-<kw name="Verify header">
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<arguments>
-<arg>//*[@class="topbar"]//*[contains(text(),"Play sample application — Computer database")]</arg>
-</arguments>
-<msg timestamp="20190711 22:08:45.083" level="INFO">Current page contains element '//*[@class="topbar"]//*[contains(text(),"Play sample application — Computer database")]'.</msg>
-<status status="PASS" starttime="20190711 22:08:44.987" endtime="20190711 22:08:45.083"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:08:44.987" endtime="20190711 22:08:45.083"></status>
-</kw>
-<kw name="Verify title">
-<kw name="Get Text" library="SeleniumLibrary">
-<doc>Returns the text value of element identified by ``locator``.</doc>
-<arguments>
-<arg>//*[@id="pagination"]/ul/li[2]/a</arg>
+<arg>adb devices</arg>
 </arguments>
 <assign>
-<var>${message}</var>
+<var>${output}</var>
 </assign>
-<msg timestamp="20190711 22:08:45.255" level="INFO">${message} = Displaying 1 to 10 of 600</msg>
-<status status="PASS" starttime="20190711 22:08:45.083" endtime="20190711 22:08:45.255"></status>
+<msg timestamp="20190714 21:05:57.661" level="INFO">Running command 'adb devices 2&gt;&amp;1'.</msg>
+<msg timestamp="20190714 21:06:01.739" level="INFO">${output} = List of devices attached
+
+* daemon not running; starting now at tcp:5037
+* daemon started successfully</msg>
+<status status="PASS" starttime="20190714 21:05:57.661" endtime="20190714 21:06:01.739"></status>
 </kw>
-<kw name="Get Substring" library="String">
-<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
 <arguments>
-<arg>${message}</arg>
-<arg>-3</arg>
+<arg>${output}</arg>
 </arguments>
-<assign>
-<var>${aantal}</var>
-</assign>
-<msg timestamp="20190711 22:08:45.255" level="INFO">${aantal} = 600</msg>
-<status status="PASS" starttime="20190711 22:08:45.255" endtime="20190711 22:08:45.255"></status>
-</kw>
-<kw name="Page Should Contain" library="SeleniumLibrary">
-<doc>Verifies that current page contains ``text``.</doc>
-<arguments>
-<arg>${aantal} computers found</arg>
-</arguments>
-<msg timestamp="20190711 22:08:45.359" level="INFO">Current page contains text '600 computers found'.</msg>
-<status status="PASS" starttime="20190711 22:08:45.255" endtime="20190711 22:08:45.359"></status>
+<msg timestamp="20190714 21:06:01.739" level="INFO">List of devices attached
+
+* daemon not running; starting now at tcp:5037
+* daemon started successfully</msg>
+<status status="PASS" starttime="20190714 21:06:01.739" endtime="20190714 21:06:01.739"></status>
 </kw>
 <kw name="Set Suite Variable" library="BuiltIn">
 <doc>Makes a variable available everywhere within the scope of the current suite.</doc>
 <arguments>
-<arg>${aantal}</arg>
+<arg>${output}</arg>
 </arguments>
-<msg timestamp="20190711 22:08:45.359" level="INFO">${aantal} = 600</msg>
-<status status="PASS" starttime="20190711 22:08:45.359" endtime="20190711 22:08:45.359"></status>
+<msg timestamp="20190714 21:06:01.739" level="INFO">${output} = List of devices attached
+
+* daemon not running; starting now at tcp:5037
+* daemon started successfully</msg>
+<status status="PASS" starttime="20190714 21:06:01.739" endtime="20190714 21:06:01.739"></status>
 </kw>
-<status status="PASS" starttime="20190711 22:08:45.083" endtime="20190711 22:08:45.359"></status>
-</kw>
-<kw name="Verify searchbox">
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<kw name="Get Line Count" library="String">
+<doc>Returns and logs the number of lines in the given string.</doc>
 <arguments>
-<arg>id=searchbox</arg>
-</arguments>
-<msg timestamp="20190711 22:08:45.491" level="INFO">Current page contains element 'id=searchbox'.</msg>
-<status status="PASS" starttime="20190711 22:08:45.359" endtime="20190711 22:08:45.491"></status>
-</kw>
-<kw name="Get Element Attribute" library="SeleniumLibrary">
-<doc>Returns value of ``attribute`` from element ``locator``.</doc>
-<arguments>
-<arg>id=searchbox</arg>
-<arg>placeholder</arg>
+<arg>${output}</arg>
 </arguments>
 <assign>
-<var>${placeholder}</var>
+<var>${lines}</var>
 </assign>
-<msg timestamp="20190711 22:08:45.682" level="INFO">${placeholder} = Filter by computer name...</msg>
-<status status="PASS" starttime="20190711 22:08:45.491" endtime="20190711 22:08:45.682"></status>
+<msg timestamp="20190714 21:06:01.739" level="INFO">4 lines</msg>
+<msg timestamp="20190714 21:06:01.739" level="INFO">${lines} = 4</msg>
+<status status="PASS" starttime="20190714 21:06:01.739" endtime="20190714 21:06:01.739"></status>
 </kw>
-<kw name="Should Be Equal As Strings" library="BuiltIn">
-<doc>Fails if objects are unequal after converting them to strings.</doc>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
 <arguments>
-<arg>${placeholder}</arg>
-<arg>Filter by computer name...</arg>
+<arg>'${lines}'=='1'</arg>
+<arg>run keywords</arg>
+<arg>log to console</arg>
+<arg>There is no mobile device connected, running the tests on a computer.</arg>
+<arg>AND</arg>
+<arg>set global variable</arg>
+<arg>${device}</arg>
+<arg>Laptop</arg>
 </arguments>
-<status status="PASS" starttime="20190711 22:08:45.682" endtime="20190711 22:08:45.682"></status>
+<status status="PASS" starttime="20190714 21:06:01.739" endtime="20190714 21:06:01.739"></status>
 </kw>
-<status status="PASS" starttime="20190711 22:08:45.359" endtime="20190711 22:08:45.682"></status>
-</kw>
-<kw name="Verify searchbutton">
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
 <arguments>
-<arg>id=searchsubmit</arg>
+<arg>'${lines}'&gt;'1'</arg>
+<arg>Check 2</arg>
 </arguments>
-<msg timestamp="20190711 22:08:45.802" level="INFO">Current page contains element 'id=searchsubmit'.</msg>
-<status status="PASS" starttime="20190711 22:08:45.682" endtime="20190711 22:08:45.802"></status>
-</kw>
-<kw name="Get Element Attribute" library="SeleniumLibrary">
-<doc>Returns value of ``attribute`` from element ``locator``.</doc>
+<kw name="Check 2">
+<kw name="Get Line" library="String">
+<doc>Returns the specified line from the given ``string``.</doc>
 <arguments>
-<arg>id=searchsubmit</arg>
-<arg>value</arg>
+<arg>${output}</arg>
+<arg>1</arg>
 </arguments>
 <assign>
-<var>${value}</var>
+<var>${msg}</var>
 </assign>
-<msg timestamp="20190711 22:08:45.999" level="INFO">${value} = Filter by name</msg>
-<status status="PASS" starttime="20190711 22:08:45.802" endtime="20190711 22:08:45.999"></status>
+<msg timestamp="20190714 21:06:01.739" level="INFO">${msg} = </msg>
+<status status="PASS" starttime="20190714 21:06:01.739" endtime="20190714 21:06:01.739"></status>
 </kw>
-<kw name="Should Be Equal As Strings" library="BuiltIn">
-<doc>Fails if objects are unequal after converting them to strings.</doc>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
 <arguments>
-<arg>${value}</arg>
-<arg>Filter by name</arg>
+<arg>Should contain</arg>
+<arg>${msg}</arg>
+<arg>device</arg>
 </arguments>
-<status status="PASS" starttime="20190711 22:08:45.999" endtime="20190711 22:08:45.999"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:08:45.682" endtime="20190711 22:08:45.999"></status>
-</kw>
-<kw name="Verify add computer button">
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<assign>
+<var>${status}</var>
+</assign>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
 <arguments>
-<arg>id=add</arg>
+<arg>${msg}</arg>
+<arg>device</arg>
 </arguments>
-<msg timestamp="20190711 22:08:46.103" level="INFO">Current page contains element 'id=add'.</msg>
-<status status="PASS" starttime="20190711 22:08:45.999" endtime="20190711 22:08:46.103"></status>
+<msg timestamp="20190714 21:06:01.739" level="FAIL">'' does not contain 'device'</msg>
+<status status="FAIL" starttime="20190714 21:06:01.739" endtime="20190714 21:06:01.739"></status>
 </kw>
-<kw name="Element Should Contain" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20190714 21:06:01.739" level="INFO">${status} = False</msg>
+<status status="PASS" starttime="20190714 21:06:01.739" endtime="20190714 21:06:01.739"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
 <arguments>
-<arg>id=add</arg>
-<arg>Add a new computer</arg>
+<arg>${status}==False</arg>
+<arg>run keywords</arg>
+<arg>log to console</arg>
+<arg>There is no mobile device connected, running the tests on a computer.</arg>
+<arg>AND</arg>
+<arg>set global variable</arg>
+<arg>${device}</arg>
+<arg>Laptop</arg>
+<arg>ELSE</arg>
+<arg>run keywords</arg>
+<arg>log to console</arg>
+<arg>Found a connected mobile device, running the tests on this device.</arg>
+<arg>AND</arg>
+<arg>Set up mobile device</arg>
 </arguments>
-<msg timestamp="20190711 22:08:46.297" level="INFO">Element 'id=add' contains text 'Add a new computer'.</msg>
-<status status="PASS" starttime="20190711 22:08:46.103" endtime="20190711 22:08:46.297"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:08:45.999" endtime="20190711 22:08:46.297"></status>
-</kw>
-<kw name="Verify pagination">
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<kw name="Run Keywords" library="BuiltIn">
+<doc>Executes all the given keywords in a sequence.</doc>
 <arguments>
-<arg>id=pagination</arg>
+<arg>log to console</arg>
+<arg>There is no mobile device connected, running the tests on a computer.</arg>
+<arg>AND</arg>
+<arg>set global variable</arg>
+<arg>${device}</arg>
+<arg>Laptop</arg>
 </arguments>
-<msg timestamp="20190711 22:08:46.419" level="INFO">Current page contains element 'id=pagination'.</msg>
-<status status="PASS" starttime="20190711 22:08:46.297" endtime="20190711 22:08:46.419"></status>
-</kw>
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
 <arguments>
-<arg>//*[@class="prev disabled"]</arg>
+<arg>There is no mobile device connected, running the tests on a computer.</arg>
 </arguments>
-<msg timestamp="20190711 22:08:46.495" level="INFO">Current page contains element '//*[@class="prev disabled"]'.</msg>
-<status status="PASS" starttime="20190711 22:08:46.419" endtime="20190711 22:08:46.495"></status>
+<status status="PASS" starttime="20190714 21:06:01.739" endtime="20190714 21:06:01.739"></status>
 </kw>
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
 <arguments>
-<arg>//*[@class="next"]</arg>
+<arg>${device}</arg>
+<arg>Laptop</arg>
 </arguments>
-<msg timestamp="20190711 22:08:46.571" level="INFO">Current page contains element '//*[@class="next"]'.</msg>
-<status status="PASS" starttime="20190711 22:08:46.495" endtime="20190711 22:08:46.571"></status>
+<msg timestamp="20190714 21:06:01.739" level="INFO">${device} = Laptop</msg>
+<status status="PASS" starttime="20190714 21:06:01.739" endtime="20190714 21:06:01.739"></status>
 </kw>
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<arguments>
-<arg>//*[@class="current"]//a[contains(text(),"Displaying 1 to 10 of ${aantal}")]</arg>
-</arguments>
-<msg timestamp="20190711 22:08:46.643" level="INFO">Current page contains element '//*[@class="current"]//a[contains(text(),"Displaying 1 to 10 of 600")]'.</msg>
-<status status="PASS" starttime="20190711 22:08:46.571" endtime="20190711 22:08:46.643"></status>
+<status status="PASS" starttime="20190714 21:06:01.739" endtime="20190714 21:06:01.739"></status>
 </kw>
-<status status="PASS" starttime="20190711 22:08:46.297" endtime="20190711 22:08:46.643"></status>
+<status status="PASS" starttime="20190714 21:06:01.739" endtime="20190714 21:06:01.739"></status>
+</kw>
+<status status="PASS" starttime="20190714 21:06:01.739" endtime="20190714 21:06:01.739"></status>
+</kw>
+<status status="PASS" starttime="20190714 21:06:01.739" endtime="20190714 21:06:01.739"></status>
 </kw>
 <kw name="Close current browser" type="teardown">
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${device}'=='Laptop'</arg>
+<arg>Run Keyword If Test Failed</arg>
+<arg>SeleniumLibrary.Capture page screenshot</arg>
+<arg>ELSE IF</arg>
+<arg>'${device}'=='Phone'</arg>
+<arg>Run Keyword If Test Failed</arg>
+<arg>AppiumLibrary.Capture page screenshot</arg>
+</arguments>
+<kw name="Run Keyword If Test Failed" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<arguments>
+<arg>SeleniumLibrary.Capture page screenshot</arg>
+</arguments>
+<status status="PASS" starttime="20190714 21:06:01.739" endtime="20190714 21:06:01.739"></status>
+</kw>
+<status status="PASS" starttime="20190714 21:06:01.739" endtime="20190714 21:06:01.739"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${device}'=='Laptop'</arg>
+<arg>SeleniumLibrary.Close Browser</arg>
+</arguments>
 <kw name="Close Browser" library="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20190711 22:08:46.643" endtime="20190711 22:08:49.672"></status>
+<status status="PASS" starttime="20190714 21:06:01.739" endtime="20190714 21:06:01.739"></status>
 </kw>
-<status status="PASS" starttime="20190711 22:08:46.643" endtime="20190711 22:08:49.672"></status>
+<status status="PASS" starttime="20190714 21:06:01.739" endtime="20190714 21:06:01.739"></status>
 </kw>
-<doc>Verifiying elements on initial landingspage
-Precondition:
-Browser variable and url are set
-
-Expected result:
-Homepage of http://computerdatabase.herokuapp.com/computers is visible
-All of the elements on the homepage are visible
-
-Test steps:</doc>
+<status status="PASS" starttime="20190714 21:06:01.739" endtime="20190714 21:06:01.739"></status>
+</kw>
 <tags>
+<tag>Check</tag>
 <tag>Happyflow</tag>
 </tags>
-<status status="PASS" starttime="20190711 22:08:43.416" endtime="20190711 22:08:49.672" critical="yes"></status>
-</test>
-<test id="s1-t2" name="Test Case 2: Create new computers">
-<kw name="Open browser and navigate to provided url">
-<kw name="Open Browser" library="SeleniumLibrary">
-<doc>Opens a new browser instance to the given ``url``.</doc>
-<arguments>
-<arg>${URL}</arg>
-<arg>${BROWSER}</arg>
-</arguments>
-<msg timestamp="20190711 22:08:49.672" level="INFO">Opening browser 'IE' to base url 'http://computer-database.herokuapp.com/computers'.</msg>
-<status status="PASS" starttime="20190711 22:08:49.672" endtime="20190711 22:08:51.062"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:08:49.672" endtime="20190711 22:08:51.062"></status>
-</kw>
-<kw name="Click 'Add a new computer' button">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>id=add</arg>
-</arguments>
-<msg timestamp="20190711 22:08:51.062" level="INFO">Clicking element 'id=add'.</msg>
-<status status="PASS" starttime="20190711 22:08:51.062" endtime="20190711 22:08:51.676"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:08:51.062" endtime="20190711 22:08:51.676"></status>
-</kw>
-<kw name="Verify add a computer page">
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<arguments>
-<arg>//*[@id="main"]//*[contains(text(),"Add a computer")]</arg>
-</arguments>
-<msg timestamp="20190711 22:08:51.760" level="INFO">Current page contains element '//*[@id="main"]//*[contains(text(),"Add a computer")]'.</msg>
-<status status="PASS" starttime="20190711 22:08:51.676" endtime="20190711 22:08:51.760"></status>
-</kw>
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<arguments>
-<arg>//*[@class="actions"]//*[@value="Create this computer"]</arg>
-</arguments>
-<msg timestamp="20190711 22:08:51.840" level="INFO">Current page contains element '//*[@class="actions"]//*[@value="Create this computer"]'.</msg>
-<status status="PASS" starttime="20190711 22:08:51.760" endtime="20190711 22:08:51.840"></status>
-</kw>
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<arguments>
-<arg>//*[@class="actions"]//*[contains(text(),"Cancel")]</arg>
-</arguments>
-<msg timestamp="20190711 22:08:51.916" level="INFO">Current page contains element '//*[@class="actions"]//*[contains(text(),"Cancel")]'.</msg>
-<status status="PASS" starttime="20190711 22:08:51.840" endtime="20190711 22:08:51.916"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:08:52.925" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:08:51.916" endtime="20190711 22:08:52.925"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:08:51.676" endtime="20190711 22:08:52.925"></status>
-</kw>
-<kw name="Verify input fields">
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<arguments>
-<arg>id=name</arg>
-</arguments>
-<msg timestamp="20190711 22:08:53.052" level="INFO">Current page contains element 'id=name'.</msg>
-<status status="PASS" starttime="20190711 22:08:52.925" endtime="20190711 22:08:53.052"></status>
-</kw>
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<arguments>
-<arg>id=introduced</arg>
-</arguments>
-<msg timestamp="20190711 22:08:53.177" level="INFO">Current page contains element 'id=introduced'.</msg>
-<status status="PASS" starttime="20190711 22:08:53.052" endtime="20190711 22:08:53.177"></status>
-</kw>
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<arguments>
-<arg>id=discontinued</arg>
-</arguments>
-<msg timestamp="20190711 22:08:53.302" level="INFO">Current page contains element 'id=discontinued'.</msg>
-<status status="PASS" starttime="20190711 22:08:53.177" endtime="20190711 22:08:53.302"></status>
-</kw>
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<arguments>
-<arg>id=company</arg>
-</arguments>
-<msg timestamp="20190711 22:08:53.411" level="INFO">Current page contains element 'id=company'.</msg>
-<status status="PASS" starttime="20190711 22:08:53.302" endtime="20190711 22:08:53.411"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:08:54.412" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:08:53.411" endtime="20190711 22:08:54.412"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:08:52.925" endtime="20190711 22:08:54.412"></status>
-</kw>
-<kw name="Fill in computer 1 name">
-<kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
-<arg>id=name</arg>
-<arg>${computerName1}</arg>
-</arguments>
-<msg timestamp="20190711 22:08:54.412" level="INFO">Typing text 'Lenovo p52' into text field 'id=name'.</msg>
-<status status="PASS" starttime="20190711 22:08:54.412" endtime="20190711 22:08:55.100"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:08:56.103" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:08:55.100" endtime="20190711 22:08:56.103"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:08:54.412" endtime="20190711 22:08:56.103"></status>
-</kw>
-<kw name="Fill in introduction 1 date">
-<kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
-<arg>id=introduced</arg>
-<arg>${introDate1}</arg>
-</arguments>
-<msg timestamp="20190711 22:08:56.103" level="INFO">Typing text '2019-07-08' into text field 'id=introduced'.</msg>
-<status status="PASS" starttime="20190711 22:08:56.103" endtime="20190711 22:08:56.757"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:08:57.759" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:08:56.757" endtime="20190711 22:08:57.759"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:08:56.103" endtime="20190711 22:08:57.759"></status>
-</kw>
-<kw name="Fill in discontinue 1 date">
-<kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
-<arg>id=discontinued</arg>
-<arg>${discontinueDate1}</arg>
-</arguments>
-<msg timestamp="20190711 22:08:57.759" level="INFO">Typing text '2024-07-15' into text field 'id=discontinued'.</msg>
-<status status="PASS" starttime="20190711 22:08:57.759" endtime="20190711 22:08:58.412"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:08:59.416" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:08:58.412" endtime="20190711 22:08:59.416"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:08:57.759" endtime="20190711 22:08:59.416"></status>
-</kw>
-<kw name="Fill in company 1 name">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>id=company</arg>
-</arguments>
-<msg timestamp="20190711 22:08:59.416" level="INFO">Clicking element 'id=company'.</msg>
-<status status="PASS" starttime="20190711 22:08:59.416" endtime="20190711 22:08:59.901"></status>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>//*[contains(text(),"Samsung Electronics")]</arg>
-</arguments>
-<msg timestamp="20190711 22:08:59.901" level="INFO">Clicking element '//*[contains(text(),"Samsung Electronics")]'.</msg>
-<status status="PASS" starttime="20190711 22:08:59.901" endtime="20190711 22:09:00.116"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:09:01.118" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:09:00.116" endtime="20190711 22:09:01.118"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:08:59.416" endtime="20190711 22:09:01.118"></status>
-</kw>
-<kw name="Click create computer">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>//*[@class="btn primary"]</arg>
-</arguments>
-<msg timestamp="20190711 22:09:01.118" level="INFO">Clicking element '//*[@class="btn primary"]'.</msg>
-<status status="PASS" starttime="20190711 22:09:01.118" endtime="20190711 22:09:01.743"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:09:02.746" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:09:01.743" endtime="20190711 22:09:02.746"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:09:01.118" endtime="20190711 22:09:02.746"></status>
-</kw>
-<kw name="Verify created computer 1 message">
-<kw name="Element Should Contain" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<arguments>
-<arg>//*[@id="main"]/div[1]</arg>
-<arg>Computer ${computerName1} has been created</arg>
-</arguments>
-<msg timestamp="20190711 22:09:02.909" level="INFO">Element '//*[@id="main"]/div[1]' contains text 'Computer Lenovo p52 has been created'.</msg>
-<status status="PASS" starttime="20190711 22:09:02.746" endtime="20190711 22:09:02.909"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:09:02.746" endtime="20190711 22:09:02.909"></status>
-</kw>
-<kw name="Click 'Add a new computer' button">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>id=add</arg>
-</arguments>
-<msg timestamp="20190711 22:09:02.909" level="INFO">Clicking element 'id=add'.</msg>
-<status status="PASS" starttime="20190711 22:09:02.909" endtime="20190711 22:09:03.485"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:09:02.909" endtime="20190711 22:09:03.485"></status>
-</kw>
-<kw name="Fill in computer 2 name">
-<kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
-<arg>id=name</arg>
-<arg>${computerName2}</arg>
-</arguments>
-<msg timestamp="20190711 22:09:03.485" level="INFO">Typing text 'HP X1' into text field 'id=name'.</msg>
-<status status="PASS" starttime="20190711 22:09:03.485" endtime="20190711 22:09:04.132"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:09:05.137" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:09:04.132" endtime="20190711 22:09:05.137"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:09:03.485" endtime="20190711 22:09:05.137"></status>
-</kw>
-<kw name="Fill in introduction 2 date">
-<kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
-<arg>id=introduced</arg>
-<arg>${introDate2}</arg>
-</arguments>
-<msg timestamp="20190711 22:09:05.137" level="INFO">Typing text '2008-1-1' into text field 'id=introduced'.</msg>
-<status status="PASS" starttime="20190711 22:09:05.137" endtime="20190711 22:09:05.780"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:09:06.786" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:09:05.780" endtime="20190711 22:09:06.786"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:09:05.137" endtime="20190711 22:09:06.786"></status>
-</kw>
-<kw name="Fill in discontinue 2 date">
-<kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
-<arg>id=discontinued</arg>
-<arg>${discontinueDate2}</arg>
-</arguments>
-<msg timestamp="20190711 22:09:06.786" level="INFO">Typing text '2012-1-1' into text field 'id=discontinued'.</msg>
-<status status="PASS" starttime="20190711 22:09:06.786" endtime="20190711 22:09:07.441"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:09:08.443" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:09:07.441" endtime="20190711 22:09:08.443"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:09:06.786" endtime="20190711 22:09:08.443"></status>
-</kw>
-<kw name="Fill in company 2 name">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>id=company</arg>
-</arguments>
-<msg timestamp="20190711 22:09:08.443" level="INFO">Clicking element 'id=company'.</msg>
-<status status="PASS" starttime="20190711 22:09:08.443" endtime="20190711 22:09:08.896"></status>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>//*[contains(text(),"Samsung Electronics")]</arg>
-</arguments>
-<msg timestamp="20190711 22:09:08.896" level="INFO">Clicking element '//*[contains(text(),"Samsung Electronics")]'.</msg>
-<status status="PASS" starttime="20190711 22:09:08.896" endtime="20190711 22:09:09.096"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:09:10.096" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:09:09.096" endtime="20190711 22:09:10.096"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:09:08.443" endtime="20190711 22:09:10.096"></status>
-</kw>
-<kw name="Click create computer">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>//*[@class="btn primary"]</arg>
-</arguments>
-<msg timestamp="20190711 22:09:10.096" level="INFO">Clicking element '//*[@class="btn primary"]'.</msg>
-<status status="PASS" starttime="20190711 22:09:10.096" endtime="20190711 22:09:10.727"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:09:11.732" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:09:10.727" endtime="20190711 22:09:11.732"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:09:10.096" endtime="20190711 22:09:11.732"></status>
-</kw>
-<kw name="Verify created computer 2 message">
-<kw name="Element Should Contain" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<arguments>
-<arg>//*[@id="main"]/div[1]</arg>
-<arg>Computer ${computerName2} has been created</arg>
-</arguments>
-<msg timestamp="20190711 22:09:11.895" level="INFO">Element '//*[@id="main"]/div[1]' contains text 'Computer HP X1 has been created'.</msg>
-<status status="PASS" starttime="20190711 22:09:11.732" endtime="20190711 22:09:11.895"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:09:11.732" endtime="20190711 22:09:11.895"></status>
-</kw>
-<kw name="Close current browser" type="teardown">
-<kw name="Close Browser" library="SeleniumLibrary">
-<doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20190711 22:09:11.895" endtime="20190711 22:09:14.941"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:09:11.895" endtime="20190711 22:09:14.941"></status>
-</kw>
-<doc>Testing the happy flow of adding a new computer
-Precondition:
-Navigate to create a computer page
-
-Expected result:
-Computer is added to database
-
-Test steps:</doc>
-<tags>
-<tag>Create</tag>
-<tag>Happyflow</tag>
-</tags>
-<status status="PASS" starttime="20190711 22:08:49.672" endtime="20190711 22:09:14.941" critical="yes"></status>
-</test>
-<test id="s1-t3" name="Test Case 3: Verify created computer 1">
-<kw name="Open browser and navigate to provided url">
-<kw name="Open Browser" library="SeleniumLibrary">
-<doc>Opens a new browser instance to the given ``url``.</doc>
-<arguments>
-<arg>${URL}</arg>
-<arg>${BROWSER}</arg>
-</arguments>
-<msg timestamp="20190711 22:09:14.941" level="INFO">Opening browser 'IE' to base url 'http://computer-database.herokuapp.com/computers'.</msg>
-<status status="PASS" starttime="20190711 22:09:14.941" endtime="20190711 22:09:16.443"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:09:14.941" endtime="20190711 22:09:16.443"></status>
-</kw>
-<kw name="Type computername 1 into searchfield">
-<kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
-<arg>id=searchbox</arg>
-<arg>${computerName1}</arg>
-</arguments>
-<msg timestamp="20190711 22:09:16.443" level="INFO">Typing text 'Lenovo p52' into text field 'id=searchbox'.</msg>
-<status status="PASS" starttime="20190711 22:09:16.443" endtime="20190711 22:09:17.127"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:09:18.128" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:09:17.127" endtime="20190711 22:09:18.128"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:09:16.443" endtime="20190711 22:09:18.128"></status>
-</kw>
-<kw name="Click &quot;Filter by name&quot;">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>id=searchsubmit</arg>
-</arguments>
-<msg timestamp="20190711 22:09:18.128" level="INFO">Clicking element 'id=searchsubmit'.</msg>
-<status status="PASS" starttime="20190711 22:09:18.128" endtime="20190711 22:09:18.684"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:09:19.687" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:09:18.684" endtime="20190711 22:09:19.687"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:09:18.128" endtime="20190711 22:09:19.687"></status>
-</kw>
-<kw name="Verify result computer 1">
-<kw name="Page Should Contain" library="SeleniumLibrary">
-<doc>Verifies that current page contains ``text``.</doc>
-<arguments>
-<arg>${computerName1}</arg>
-</arguments>
-<msg timestamp="20190711 22:09:19.791" level="INFO">Current page contains text 'Lenovo p52'.</msg>
-<status status="PASS" starttime="20190711 22:09:19.687" endtime="20190711 22:09:19.791"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:09:20.798" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:09:19.791" endtime="20190711 22:09:20.798"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:09:19.687" endtime="20190711 22:09:20.798"></status>
-</kw>
-<kw name="Click computer 1">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>//*[contains(text(),"${computerName1}")]</arg>
-</arguments>
-<msg timestamp="20190711 22:09:20.798" level="INFO">Clicking element '//*[contains(text(),"Lenovo p52")]'.</msg>
-<status status="PASS" starttime="20190711 22:09:20.798" endtime="20190711 22:09:21.338"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:09:22.341" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:09:21.338" endtime="20190711 22:09:22.341"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:09:20.798" endtime="20190711 22:09:22.341"></status>
-</kw>
-<kw name="Veryfy input fields computer 1">
-<kw name="Get Element Attribute" library="SeleniumLibrary">
-<doc>Returns value of ``attribute`` from element ``locator``.</doc>
-<arguments>
-<arg>id=name</arg>
-<arg>value</arg>
-</arguments>
-<assign>
-<var>${name}</var>
-</assign>
-<msg timestamp="20190711 22:09:22.544" level="INFO">${name} = Lenovo p52</msg>
-<status status="PASS" starttime="20190711 22:09:22.341" endtime="20190711 22:09:22.544"></status>
-</kw>
-<kw name="Should Be Equal As Strings" library="BuiltIn">
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<arguments>
-<arg>${name}</arg>
-<arg>${computerName1}</arg>
-</arguments>
-<status status="PASS" starttime="20190711 22:09:22.544" endtime="20190711 22:09:22.544"></status>
-</kw>
-<kw name="Get Element Attribute" library="SeleniumLibrary">
-<doc>Returns value of ``attribute`` from element ``locator``.</doc>
-<arguments>
-<arg>id=introduced</arg>
-<arg>value</arg>
-</arguments>
-<assign>
-<var>${intro}</var>
-</assign>
-<msg timestamp="20190711 22:09:22.744" level="INFO">${intro} = 2019-07-08</msg>
-<status status="PASS" starttime="20190711 22:09:22.544" endtime="20190711 22:09:22.744"></status>
-</kw>
-<kw name="Should Be Equal As Strings" library="BuiltIn">
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<arguments>
-<arg>${intro}</arg>
-<arg>${introDate1}</arg>
-</arguments>
-<status status="PASS" starttime="20190711 22:09:22.744" endtime="20190711 22:09:22.744"></status>
-</kw>
-<kw name="Get Element Attribute" library="SeleniumLibrary">
-<doc>Returns value of ``attribute`` from element ``locator``.</doc>
-<arguments>
-<arg>id=discontinued</arg>
-<arg>value</arg>
-</arguments>
-<assign>
-<var>${discontinue}</var>
-</assign>
-<msg timestamp="20190711 22:09:22.943" level="INFO">${discontinue} = 2024-07-15</msg>
-<status status="PASS" starttime="20190711 22:09:22.744" endtime="20190711 22:09:22.943"></status>
-</kw>
-<kw name="Should Be Equal As Strings" library="BuiltIn">
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<arguments>
-<arg>${discontinue}</arg>
-<arg>${discontinueDate1}</arg>
-</arguments>
-<status status="PASS" starttime="20190711 22:09:22.943" endtime="20190711 22:09:22.943"></status>
-</kw>
-<kw name="Get Element Attribute" library="SeleniumLibrary">
-<doc>Returns value of ``attribute`` from element ``locator``.</doc>
-<arguments>
-<arg>id=company</arg>
-<arg>value</arg>
-</arguments>
-<assign>
-<var>${company}</var>
-</assign>
-<msg timestamp="20190711 22:09:23.141" level="INFO">${company} = 43</msg>
-<status status="PASS" starttime="20190711 22:09:22.943" endtime="20190711 22:09:23.141"></status>
-</kw>
-<kw name="Should Be Equal" library="BuiltIn">
-<doc>Fails if the given objects are unequal.</doc>
-<arguments>
-<arg>${company}</arg>
-<arg>43</arg>
-</arguments>
-<status status="PASS" starttime="20190711 22:09:23.141" endtime="20190711 22:09:23.141"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:09:22.341" endtime="20190711 22:09:23.141"></status>
-</kw>
-<kw name="Close current browser" type="teardown">
-<kw name="Close Browser" library="SeleniumLibrary">
-<doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20190711 22:09:23.141" endtime="20190711 22:09:26.159"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:09:23.141" endtime="20190711 22:09:26.159"></status>
-</kw>
-<doc>Checking the first added computer
-Precondition:
-Searchbox has been filled in
-Filter by name has been clicked
-
-Expected result:
-Computer is visible in database after search
-
-Test steps:</doc>
-<tags>
-<tag>Happyflow</tag>
-<tag>Read</tag>
-</tags>
-<status status="PASS" starttime="20190711 22:09:14.941" endtime="20190711 22:09:26.159" critical="yes"></status>
-</test>
-<test id="s1-t4" name="Test Case 4: Delete created computer 1">
-<kw name="Open browser and navigate to provided url">
-<kw name="Open Browser" library="SeleniumLibrary">
-<doc>Opens a new browser instance to the given ``url``.</doc>
-<arguments>
-<arg>${URL}</arg>
-<arg>${BROWSER}</arg>
-</arguments>
-<msg timestamp="20190711 22:09:26.159" level="INFO">Opening browser 'IE' to base url 'http://computer-database.herokuapp.com/computers'.</msg>
-<status status="PASS" starttime="20190711 22:09:26.159" endtime="20190711 22:09:27.553"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:09:26.159" endtime="20190711 22:09:27.553"></status>
-</kw>
-<kw name="Type computername 1 into searchfield">
-<kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
-<arg>id=searchbox</arg>
-<arg>${computerName1}</arg>
-</arguments>
-<msg timestamp="20190711 22:09:27.553" level="INFO">Typing text 'Lenovo p52' into text field 'id=searchbox'.</msg>
-<status status="PASS" starttime="20190711 22:09:27.553" endtime="20190711 22:09:28.256"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:09:29.257" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:09:28.256" endtime="20190711 22:09:29.257"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:09:27.553" endtime="20190711 22:09:29.257"></status>
-</kw>
-<kw name="Click &quot;Filter by name&quot;">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>id=searchsubmit</arg>
-</arguments>
-<msg timestamp="20190711 22:09:29.257" level="INFO">Clicking element 'id=searchsubmit'.</msg>
-<status status="PASS" starttime="20190711 22:09:29.257" endtime="20190711 22:09:29.794"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:09:30.797" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:09:29.794" endtime="20190711 22:09:30.797"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:09:29.257" endtime="20190711 22:09:30.797"></status>
-</kw>
-<kw name="Verify result computer 1">
-<kw name="Page Should Contain" library="SeleniumLibrary">
-<doc>Verifies that current page contains ``text``.</doc>
-<arguments>
-<arg>${computerName1}</arg>
-</arguments>
-<msg timestamp="20190711 22:09:30.901" level="INFO">Current page contains text 'Lenovo p52'.</msg>
-<status status="PASS" starttime="20190711 22:09:30.797" endtime="20190711 22:09:30.901"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:09:31.901" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:09:30.901" endtime="20190711 22:09:31.901"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:09:30.797" endtime="20190711 22:09:31.901"></status>
-</kw>
-<kw name="Click computer 1">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>//*[contains(text(),"${computerName1}")]</arg>
-</arguments>
-<msg timestamp="20190711 22:09:31.901" level="INFO">Clicking element '//*[contains(text(),"Lenovo p52")]'.</msg>
-<status status="PASS" starttime="20190711 22:09:31.901" endtime="20190711 22:09:32.413"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:09:33.416" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:09:32.413" endtime="20190711 22:09:33.416"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:09:31.901" endtime="20190711 22:09:33.416"></status>
-</kw>
-<kw name="Delete computer 1">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>//*[@class="btn danger"]</arg>
-</arguments>
-<msg timestamp="20190711 22:09:33.416" level="INFO">Clicking element '//*[@class="btn danger"]'.</msg>
-<status status="PASS" starttime="20190711 22:09:33.416" endtime="20190711 22:09:34.044"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:09:33.416" endtime="20190711 22:09:34.044"></status>
-</kw>
-<kw name="Verify delete message">
-<kw name="Element Should Contain" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<arguments>
-<arg>//*[@id="main"]/div[1]</arg>
-<arg>Done! Computer has been deleted</arg>
-</arguments>
-<msg timestamp="20190711 22:09:34.198" level="INFO">Element '//*[@id="main"]/div[1]' contains text 'Done! Computer has been deleted'.</msg>
-<status status="PASS" starttime="20190711 22:09:34.044" endtime="20190711 22:09:34.198"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:09:34.044" endtime="20190711 22:09:34.198"></status>
-</kw>
-<kw name="Close current browser" type="teardown">
-<kw name="Close Browser" library="SeleniumLibrary">
-<doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20190711 22:09:34.198" endtime="20190711 22:09:37.228"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:09:34.198" endtime="20190711 22:09:37.228"></status>
-</kw>
-<doc>Deleting the first added computer
-Precondition:
-Searchbox has been filled in
-Filter by name has been clicked
-
-Expected result:
-Computer is visible in database after search
-
-Test steps:</doc>
-<tags>
-<tag>Delete</tag>
-<tag>Happyflow</tag>
-</tags>
-<status status="PASS" starttime="20190711 22:09:26.159" endtime="20190711 22:09:37.228" critical="yes"></status>
-</test>
-<test id="s1-t5" name="Test Case 5: Edit computer 2 valid">
-<kw name="Open browser and navigate to provided url">
-<kw name="Open Browser" library="SeleniumLibrary">
-<doc>Opens a new browser instance to the given ``url``.</doc>
-<arguments>
-<arg>${URL}</arg>
-<arg>${BROWSER}</arg>
-</arguments>
-<msg timestamp="20190711 22:09:37.228" level="INFO">Opening browser 'IE' to base url 'http://computer-database.herokuapp.com/computers'.</msg>
-<status status="PASS" starttime="20190711 22:09:37.228" endtime="20190711 22:09:38.621"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:09:37.228" endtime="20190711 22:09:38.621"></status>
-</kw>
-<kw name="Type computername 2 into searchfield">
-<kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
-<arg>id=searchbox</arg>
-<arg>${computerName2}</arg>
-</arguments>
-<msg timestamp="20190711 22:09:38.621" level="INFO">Typing text 'HP X1' into text field 'id=searchbox'.</msg>
-<status status="PASS" starttime="20190711 22:09:38.621" endtime="20190711 22:09:39.303"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:09:40.304" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:09:39.303" endtime="20190711 22:09:40.304"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:09:38.621" endtime="20190711 22:09:40.304"></status>
-</kw>
-<kw name="Click &quot;Filter by name&quot;">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>id=searchsubmit</arg>
-</arguments>
-<msg timestamp="20190711 22:09:40.305" level="INFO">Clicking element 'id=searchsubmit'.</msg>
-<status status="PASS" starttime="20190711 22:09:40.305" endtime="20190711 22:09:40.896"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:09:41.899" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:09:40.896" endtime="20190711 22:09:41.899"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:09:40.305" endtime="20190711 22:09:41.899"></status>
-</kw>
-<kw name="Verify result computer 2">
-<kw name="Page Should Contain" library="SeleniumLibrary">
-<doc>Verifies that current page contains ``text``.</doc>
-<arguments>
-<arg>${computerName2}</arg>
-</arguments>
-<msg timestamp="20190711 22:09:42.023" level="INFO">Current page contains text 'HP X1'.</msg>
-<status status="PASS" starttime="20190711 22:09:41.899" endtime="20190711 22:09:42.023"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:09:43.025" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:09:42.023" endtime="20190711 22:09:43.025"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:09:41.899" endtime="20190711 22:09:43.025"></status>
-</kw>
-<kw name="Click computer 2">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>//*[contains(text(),"${computerName2}")]</arg>
-</arguments>
-<msg timestamp="20190711 22:09:43.025" level="INFO">Clicking element '//*[contains(text(),"HP X1")]'.</msg>
-<status status="PASS" starttime="20190711 22:09:43.025" endtime="20190711 22:09:43.545"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:09:44.546" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:09:43.545" endtime="20190711 22:09:44.546"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:09:43.025" endtime="20190711 22:09:44.546"></status>
-</kw>
-<kw name="Edit computer 2 fields">
-<kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
-<arg>id=name</arg>
-<arg>${computerName2Edited}</arg>
-</arguments>
-<msg timestamp="20190711 22:09:44.546" level="INFO">Typing text 'Testcomputer' into text field 'id=name'.</msg>
-<status status="PASS" starttime="20190711 22:09:44.546" endtime="20190711 22:09:45.218"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:09:46.218" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:09:45.218" endtime="20190711 22:09:46.218"></status>
-</kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
-<arg>id=introduced</arg>
-<arg>${introDate2Edited}</arg>
-</arguments>
-<msg timestamp="20190711 22:09:46.218" level="INFO">Typing text '2016-12-01' into text field 'id=introduced'.</msg>
-<status status="PASS" starttime="20190711 22:09:46.218" endtime="20190711 22:09:46.892"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:09:47.895" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:09:46.892" endtime="20190711 22:09:47.895"></status>
-</kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
-<arg>id=discontinued</arg>
-<arg>${discontinueDate2Edited}</arg>
-</arguments>
-<msg timestamp="20190711 22:09:47.895" level="INFO">Typing text '2019-1-1' into text field 'id=discontinued'.</msg>
-<status status="PASS" starttime="20190711 22:09:47.895" endtime="20190711 22:09:48.553"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:09:49.556" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:09:48.553" endtime="20190711 22:09:49.556"></status>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>id=company</arg>
-</arguments>
-<msg timestamp="20190711 22:09:49.556" level="INFO">Clicking element 'id=company'.</msg>
-<status status="PASS" starttime="20190711 22:09:49.556" endtime="20190711 22:09:50.032"></status>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>//*[contains(text(),"Canon")]</arg>
-</arguments>
-<msg timestamp="20190711 22:09:50.032" level="INFO">Clicking element '//*[contains(text(),"Canon")]'.</msg>
-<status status="PASS" starttime="20190711 22:09:50.032" endtime="20190711 22:09:50.229"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:09:51.234" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:09:50.230" endtime="20190711 22:09:51.234"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:09:44.546" endtime="20190711 22:09:51.234"></status>
-</kw>
-<kw name="Click save this computer">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>//*[@class="btn primary"]</arg>
-</arguments>
-<msg timestamp="20190711 22:09:51.234" level="INFO">Clicking element '//*[@class="btn primary"]'.</msg>
-<status status="PASS" starttime="20190711 22:09:51.234" endtime="20190711 22:09:51.840"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:09:52.844" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:09:51.840" endtime="20190711 22:09:52.844"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:09:51.234" endtime="20190711 22:09:52.844"></status>
-</kw>
-<kw name="Verify edited computer">
-<kw name="Element Should Contain" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<arguments>
-<arg>//*[@id="main"]/div[1]</arg>
-<arg>Computer ${computerName2Edited} has been updated</arg>
-</arguments>
-<msg timestamp="20190711 22:09:53.009" level="INFO">Element '//*[@id="main"]/div[1]' contains text 'Computer Testcomputer has been updated'.</msg>
-<status status="PASS" starttime="20190711 22:09:52.844" endtime="20190711 22:09:53.009"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:09:52.844" endtime="20190711 22:09:53.009"></status>
-</kw>
-<kw name="Close current browser" type="teardown">
-<kw name="Close Browser" library="SeleniumLibrary">
-<doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20190711 22:09:53.009" endtime="20190711 22:09:56.031"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:09:53.009" endtime="20190711 22:09:56.031"></status>
-</kw>
-<doc>Editing the second computer with different values
-Precondition:
-Searchbox has been filled in
-Filter by name has been clicked
-
-Expected result:
-Edited values are saved to database
-
-Test steps:</doc>
-<tags>
-<tag>Edit</tag>
-<tag>Happyflow</tag>
-</tags>
-<status status="PASS" starttime="20190711 22:09:37.228" endtime="20190711 22:09:56.031" critical="yes"></status>
-</test>
-<test id="s1-t6" name="Test Case 6: Edit computer 2 same values">
-<kw name="Open browser and navigate to provided url">
-<kw name="Open Browser" library="SeleniumLibrary">
-<doc>Opens a new browser instance to the given ``url``.</doc>
-<arguments>
-<arg>${URL}</arg>
-<arg>${BROWSER}</arg>
-</arguments>
-<msg timestamp="20190711 22:09:56.031" level="INFO">Opening browser 'IE' to base url 'http://computer-database.herokuapp.com/computers'.</msg>
-<status status="PASS" starttime="20190711 22:09:56.031" endtime="20190711 22:09:57.417"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:09:56.031" endtime="20190711 22:09:57.417"></status>
-</kw>
-<kw name="Type computername 2 edited into searchfield">
-<kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
-<arg>id=searchbox</arg>
-<arg>${computerName2Edited}</arg>
-</arguments>
-<msg timestamp="20190711 22:09:57.417" level="INFO">Typing text 'Testcomputer' into text field 'id=searchbox'.</msg>
-<status status="PASS" starttime="20190711 22:09:57.417" endtime="20190711 22:09:58.126"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:09:59.130" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:09:58.126" endtime="20190711 22:09:59.130"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:09:57.417" endtime="20190711 22:09:59.130"></status>
-</kw>
-<kw name="Click &quot;Filter by name&quot;">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>id=searchsubmit</arg>
-</arguments>
-<msg timestamp="20190711 22:09:59.130" level="INFO">Clicking element 'id=searchsubmit'.</msg>
-<status status="PASS" starttime="20190711 22:09:59.130" endtime="20190711 22:09:59.706"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:10:00.709" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:09:59.706" endtime="20190711 22:10:00.709"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:09:59.130" endtime="20190711 22:10:00.709"></status>
-</kw>
-<kw name="Verify result computer 2 edited">
-<kw name="Page Should Contain" library="SeleniumLibrary">
-<doc>Verifies that current page contains ``text``.</doc>
-<arguments>
-<arg>${computerName2Edited}</arg>
-</arguments>
-<msg timestamp="20190711 22:10:00.873" level="INFO">Current page contains text 'Testcomputer'.</msg>
-<status status="PASS" starttime="20190711 22:10:00.709" endtime="20190711 22:10:00.873"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:10:01.874" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:10:00.873" endtime="20190711 22:10:01.874"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:00.709" endtime="20190711 22:10:01.874"></status>
-</kw>
-<kw name="Click computer 2 edited">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>//*[contains(text(),"${computerName2Edited}")]</arg>
-</arguments>
-<msg timestamp="20190711 22:10:01.874" level="INFO">Clicking element '//*[contains(text(),"Testcomputer")]'.</msg>
-<status status="PASS" starttime="20190711 22:10:01.874" endtime="20190711 22:10:02.394"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:10:03.397" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:10:02.394" endtime="20190711 22:10:03.397"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:01.874" endtime="20190711 22:10:03.397"></status>
-</kw>
-<kw name="Edit computer 2 fields">
-<kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
-<arg>id=name</arg>
-<arg>${computerName2Edited}</arg>
-</arguments>
-<msg timestamp="20190711 22:10:03.397" level="INFO">Typing text 'Testcomputer' into text field 'id=name'.</msg>
-<status status="PASS" starttime="20190711 22:10:03.397" endtime="20190711 22:10:04.078"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:10:05.083" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:10:04.078" endtime="20190711 22:10:05.083"></status>
-</kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
-<arg>id=introduced</arg>
-<arg>${introDate2Edited}</arg>
-</arguments>
-<msg timestamp="20190711 22:10:05.083" level="INFO">Typing text '2016-12-01' into text field 'id=introduced'.</msg>
-<status status="PASS" starttime="20190711 22:10:05.083" endtime="20190711 22:10:05.767"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:10:06.768" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:10:05.767" endtime="20190711 22:10:06.768"></status>
-</kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
-<arg>id=discontinued</arg>
-<arg>${discontinueDate2Edited}</arg>
-</arguments>
-<msg timestamp="20190711 22:10:06.768" level="INFO">Typing text '2019-1-1' into text field 'id=discontinued'.</msg>
-<status status="PASS" starttime="20190711 22:10:06.768" endtime="20190711 22:10:07.421"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:10:08.423" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:10:07.421" endtime="20190711 22:10:08.423"></status>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>id=company</arg>
-</arguments>
-<msg timestamp="20190711 22:10:08.423" level="INFO">Clicking element 'id=company'.</msg>
-<status status="PASS" starttime="20190711 22:10:08.423" endtime="20190711 22:10:08.870"></status>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>//*[contains(text(),"Canon")]</arg>
-</arguments>
-<msg timestamp="20190711 22:10:08.870" level="INFO">Clicking element '//*[contains(text(),"Canon")]'.</msg>
-<status status="PASS" starttime="20190711 22:10:08.870" endtime="20190711 22:10:09.071"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:10:10.072" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:10:09.071" endtime="20190711 22:10:10.072"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:03.397" endtime="20190711 22:10:10.072"></status>
-</kw>
-<kw name="Click save this computer">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>//*[@class="btn primary"]</arg>
-</arguments>
-<msg timestamp="20190711 22:10:10.072" level="INFO">Clicking element '//*[@class="btn primary"]'.</msg>
-<status status="PASS" starttime="20190711 22:10:10.072" endtime="20190711 22:10:10.710"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:10:11.715" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:10:10.710" endtime="20190711 22:10:11.715"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:10.072" endtime="20190711 22:10:11.715"></status>
-</kw>
-<kw name="Verify edited computer">
-<kw name="Element Should Contain" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<arguments>
-<arg>//*[@id="main"]/div[1]</arg>
-<arg>Computer ${computerName2Edited} has been updated</arg>
-</arguments>
-<msg timestamp="20190711 22:10:11.877" level="INFO">Element '//*[@id="main"]/div[1]' contains text 'Computer Testcomputer has been updated'.</msg>
-<status status="PASS" starttime="20190711 22:10:11.715" endtime="20190711 22:10:11.877"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:11.715" endtime="20190711 22:10:11.877"></status>
-</kw>
-<kw name="Close current browser" type="teardown">
-<kw name="Close Browser" library="SeleniumLibrary">
-<doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20190711 22:10:11.877" endtime="20190711 22:10:14.909"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:11.877" endtime="20190711 22:10:14.909"></status>
-</kw>
-<doc>Editing the second computer with same values
-Precondition:
-Searchbox has been filled in
-Filter by name has been clicked
-
-Expected result:
-Message containing nothing has been changed
-
-Test steps:</doc>
-<tags>
-<tag>Edit</tag>
-<tag>Sadflow</tag>
-</tags>
-<status status="PASS" starttime="20190711 22:09:56.031" endtime="20190711 22:10:14.909" critical="yes"></status>
-</test>
-<test id="s1-t7" name="Test Case 7: Search non-existing computer">
-<kw name="Open browser and navigate to provided url">
-<kw name="Open Browser" library="SeleniumLibrary">
-<doc>Opens a new browser instance to the given ``url``.</doc>
-<arguments>
-<arg>${URL}</arg>
-<arg>${BROWSER}</arg>
-</arguments>
-<msg timestamp="20190711 22:10:14.909" level="INFO">Opening browser 'IE' to base url 'http://computer-database.herokuapp.com/computers'.</msg>
-<status status="PASS" starttime="20190711 22:10:14.909" endtime="20190711 22:10:16.309"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:14.909" endtime="20190711 22:10:16.309"></status>
-</kw>
-<kw name="Type computername x into searchfield">
-<kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
-<arg>id=searchbox</arg>
-<arg>${computerNamex}</arg>
-</arguments>
-<msg timestamp="20190711 22:10:16.309" level="INFO">Typing text 'XXXX' into text field 'id=searchbox'.</msg>
-<status status="PASS" starttime="20190711 22:10:16.309" endtime="20190711 22:10:16.981"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:10:17.985" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:10:16.981" endtime="20190711 22:10:17.985"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:16.309" endtime="20190711 22:10:17.985"></status>
-</kw>
-<kw name="Click &quot;Filter by name&quot;">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>id=searchsubmit</arg>
-</arguments>
-<msg timestamp="20190711 22:10:17.985" level="INFO">Clicking element 'id=searchsubmit'.</msg>
-<status status="PASS" starttime="20190711 22:10:17.985" endtime="20190711 22:10:18.533"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:10:19.535" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:10:18.533" endtime="20190711 22:10:19.535"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:17.985" endtime="20190711 22:10:19.535"></status>
-</kw>
-<kw name="Verify error message">
-<kw name="Element Should Contain" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<arguments>
-<arg>//*[@id="main"]/h1</arg>
-<arg>No computers found</arg>
-</arguments>
-<msg timestamp="20190711 22:10:19.692" level="INFO">Element '//*[@id="main"]/h1' contains text 'No computers found'.</msg>
-<status status="PASS" starttime="20190711 22:10:19.535" endtime="20190711 22:10:19.692"></status>
-</kw>
-<kw name="Element Should Contain" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<arguments>
-<arg>//*[@id="main"]/div[2]</arg>
-<arg>Nothing to display</arg>
-</arguments>
-<msg timestamp="20190711 22:10:19.842" level="INFO">Element '//*[@id="main"]/div[2]' contains text 'Nothing to display'.</msg>
-<status status="PASS" starttime="20190711 22:10:19.692" endtime="20190711 22:10:19.842"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:19.535" endtime="20190711 22:10:19.842"></status>
-</kw>
-<kw name="Close current browser" type="teardown">
-<kw name="Close Browser" library="SeleniumLibrary">
-<doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20190711 22:10:19.842" endtime="20190711 22:10:22.873"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:19.842" endtime="20190711 22:10:22.873"></status>
-</kw>
-<doc>Filter a computer that does not exist
-Precondition:
-Searchbox has been filled in
-Filter by name has been clicked
-
-Expected result:
-Error message with no computers found
-
-Test steps:</doc>
-<tags>
-<tag>Edit</tag>
-<tag>Sadflow</tag>
-</tags>
-<status status="PASS" starttime="20190711 22:10:14.909" endtime="20190711 22:10:22.873" critical="yes"></status>
-</test>
-<test id="s1-t8" name="Test Case 8: Testing input fields exeptions">
-<kw name="Open browser and navigate to provided url">
-<kw name="Open Browser" library="SeleniumLibrary">
-<doc>Opens a new browser instance to the given ``url``.</doc>
-<arguments>
-<arg>${URL}</arg>
-<arg>${BROWSER}</arg>
-</arguments>
-<msg timestamp="20190711 22:10:22.873" level="INFO">Opening browser 'IE' to base url 'http://computer-database.herokuapp.com/computers'.</msg>
-<status status="PASS" starttime="20190711 22:10:22.873" endtime="20190711 22:10:24.255"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:22.873" endtime="20190711 22:10:24.255"></status>
-</kw>
-<kw name="Click 'Add a new computer' button">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>id=add</arg>
-</arguments>
-<msg timestamp="20190711 22:10:24.255" level="INFO">Clicking element 'id=add'.</msg>
-<status status="PASS" starttime="20190711 22:10:24.255" endtime="20190711 22:10:24.854"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:24.255" endtime="20190711 22:10:24.854"></status>
-</kw>
-<kw name="Verify required fields">
-<kw name="Click create computer">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>//*[@class="btn primary"]</arg>
-</arguments>
-<msg timestamp="20190711 22:10:24.854" level="INFO">Clicking element '//*[@class="btn primary"]'.</msg>
-<status status="PASS" starttime="20190711 22:10:24.854" endtime="20190711 22:10:25.538"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:10:26.542" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:10:25.538" endtime="20190711 22:10:26.542"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:24.854" endtime="20190711 22:10:26.542"></status>
-</kw>
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<arguments>
-<arg>//*[@class="clearfix error"]//*[contains(text(),"Required")]</arg>
-</arguments>
-<msg timestamp="20190711 22:10:26.619" level="INFO">Current page contains element '//*[@class="clearfix error"]//*[contains(text(),"Required")]'.</msg>
-<status status="PASS" starttime="20190711 22:10:26.542" endtime="20190711 22:10:26.619"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:24.854" endtime="20190711 22:10:26.619"></status>
-</kw>
-<kw name="Verify invalid date introduced date">
-<kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
-<arg>id=introduced</arg>
-<arg>000000</arg>
-</arguments>
-<msg timestamp="20190711 22:10:26.619" level="INFO">Typing text '000000' into text field 'id=introduced'.</msg>
-<status status="PASS" starttime="20190711 22:10:26.619" endtime="20190711 22:10:27.264"></status>
-</kw>
-<kw name="Click create computer">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>//*[@class="btn primary"]</arg>
-</arguments>
-<msg timestamp="20190711 22:10:27.264" level="INFO">Clicking element '//*[@class="btn primary"]'.</msg>
-<status status="PASS" starttime="20190711 22:10:27.264" endtime="20190711 22:10:27.773"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:10:28.773" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:10:27.773" endtime="20190711 22:10:28.773"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:27.264" endtime="20190711 22:10:28.773"></status>
-</kw>
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<arguments>
-<arg>//*[@class="clearfix error"]//*[@id="introduced"]</arg>
-</arguments>
-<msg timestamp="20190711 22:10:28.852" level="INFO">Current page contains element '//*[@class="clearfix error"]//*[@id="introduced"]'.</msg>
-<status status="PASS" starttime="20190711 22:10:28.773" endtime="20190711 22:10:28.852"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:26.619" endtime="20190711 22:10:28.852"></status>
-</kw>
-<kw name="Verify invalid date discontinue date">
-<kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
-<arg>id=discontinued</arg>
-<arg>xxxxxxx</arg>
-</arguments>
-<msg timestamp="20190711 22:10:28.852" level="INFO">Typing text 'xxxxxxx' into text field 'id=discontinued'.</msg>
-<status status="PASS" starttime="20190711 22:10:28.852" endtime="20190711 22:10:29.480"></status>
-</kw>
-<kw name="Click create computer">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>//*[@class="btn primary"]</arg>
-</arguments>
-<msg timestamp="20190711 22:10:29.480" level="INFO">Clicking element '//*[@class="btn primary"]'.</msg>
-<status status="PASS" starttime="20190711 22:10:29.480" endtime="20190711 22:10:29.981"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:10:30.983" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:10:29.981" endtime="20190711 22:10:30.983"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:29.480" endtime="20190711 22:10:30.983"></status>
-</kw>
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<arguments>
-<arg>//*[@class="clearfix error"]//*[@id="discontinued"]</arg>
-</arguments>
-<msg timestamp="20190711 22:10:31.057" level="INFO">Current page contains element '//*[@class="clearfix error"]//*[@id="discontinued"]'.</msg>
-<status status="PASS" starttime="20190711 22:10:30.983" endtime="20190711 22:10:31.057"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:28.852" endtime="20190711 22:10:31.057"></status>
-</kw>
-<kw name="Verify valid indtroduced and invalid discontinue date">
-<kw name="Clear Element Text" library="SeleniumLibrary">
-<doc>Clears the value of text entry element identified by ``locator``.</doc>
-<arguments>
-<arg>id=introduced</arg>
-</arguments>
-<status status="PASS" starttime="20190711 22:10:31.057" endtime="20190711 22:10:31.404"></status>
-</kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
-<arg>id=introduced</arg>
-<arg>2019-12-12</arg>
-</arguments>
-<msg timestamp="20190711 22:10:31.404" level="INFO">Typing text '2019-12-12' into text field 'id=introduced'.</msg>
-<status status="PASS" starttime="20190711 22:10:31.404" endtime="20190711 22:10:32.051"></status>
-</kw>
-<kw name="Click create computer">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>//*[@class="btn primary"]</arg>
-</arguments>
-<msg timestamp="20190711 22:10:32.051" level="INFO">Clicking element '//*[@class="btn primary"]'.</msg>
-<status status="PASS" starttime="20190711 22:10:32.051" endtime="20190711 22:10:32.544"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:10:33.547" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:10:32.544" endtime="20190711 22:10:33.547"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:32.051" endtime="20190711 22:10:33.547"></status>
-</kw>
-<kw name="Page Should Not Contain Element" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<arguments>
-<arg>//*[@class="clearfix error"]//*[@id="introduced"]</arg>
-</arguments>
-<msg timestamp="20190711 22:10:33.869" level="INFO">Current page does not contain element '//*[@class="clearfix error"]//*[@id="introduced"]'.</msg>
-<status status="PASS" starttime="20190711 22:10:33.547" endtime="20190711 22:10:33.869"></status>
-</kw>
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<arguments>
-<arg>//*[@class="clearfix error"]//*[@id="discontinued"]</arg>
-</arguments>
-<msg timestamp="20190711 22:10:33.947" level="INFO">Current page contains element '//*[@class="clearfix error"]//*[@id="discontinued"]'.</msg>
-<status status="PASS" starttime="20190711 22:10:33.869" endtime="20190711 22:10:33.947"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:31.057" endtime="20190711 22:10:33.947"></status>
-</kw>
-<kw name="Close current browser" type="teardown">
-<kw name="Close Browser" library="SeleniumLibrary">
-<doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20190711 22:10:33.947" endtime="20190711 22:10:36.985"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:33.947" endtime="20190711 22:10:36.985"></status>
-</kw>
-<doc>Testing input fields
-Precondition:
-Add a computer screen is visible
-
-Expected result:
-Error message when the requirements of fields have been met
-
-Test steps:</doc>
-<tags>
-<tag>exeptions</tag>
-<tag>Sadflow</tag>
-</tags>
-<status status="PASS" starttime="20190711 22:10:22.873" endtime="20190711 22:10:36.985" critical="yes"></status>
-</test>
-<test id="s1-t9" name="Test Case 9: Verify special characters">
-<kw name="Open browser and navigate to provided url">
-<kw name="Open Browser" library="SeleniumLibrary">
-<doc>Opens a new browser instance to the given ``url``.</doc>
-<arguments>
-<arg>${URL}</arg>
-<arg>${BROWSER}</arg>
-</arguments>
-<msg timestamp="20190711 22:10:36.985" level="INFO">Opening browser 'IE' to base url 'http://computer-database.herokuapp.com/computers'.</msg>
-<status status="PASS" starttime="20190711 22:10:36.985" endtime="20190711 22:10:38.394"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:36.985" endtime="20190711 22:10:38.394"></status>
-</kw>
-<kw name="Click 'Add a new computer' button">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>id=add</arg>
-</arguments>
-<msg timestamp="20190711 22:10:38.394" level="INFO">Clicking element 'id=add'.</msg>
-<status status="PASS" starttime="20190711 22:10:38.394" endtime="20190711 22:10:38.991"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:38.394" endtime="20190711 22:10:38.991"></status>
-</kw>
-<kw name="Fill in computername special charaters">
-<kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
-<arg>id=name</arg>
-<arg>${computerSpecialCharacter}</arg>
-</arguments>
-<msg timestamp="20190711 22:10:38.991" level="INFO">Typing text 'Ðíäĸřìéŧên &amp; $p€cial€ t€k€n$ met ÁΠĪ’s' into text field 'id=name'.</msg>
-<status status="PASS" starttime="20190711 22:10:38.991" endtime="20190711 22:10:39.800"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:38.991" endtime="20190711 22:10:39.800"></status>
-</kw>
-<kw name="Click create computer">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>//*[@class="btn primary"]</arg>
-</arguments>
-<msg timestamp="20190711 22:10:39.800" level="INFO">Clicking element '//*[@class="btn primary"]'.</msg>
-<status status="PASS" starttime="20190711 22:10:39.800" endtime="20190711 22:10:40.409"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:10:41.413" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:10:40.409" endtime="20190711 22:10:41.413"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:39.800" endtime="20190711 22:10:41.413"></status>
-</kw>
-<kw name="Verify creater computer special message">
-<kw name="Element Should Contain" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<arguments>
-<arg>//*[@id="main"]/div[1]</arg>
-<arg>Done! Computer ${computerSpecialCharacter} has been created</arg>
-</arguments>
-<msg timestamp="20190711 22:10:41.587" level="INFO">Element '//*[@id="main"]/div[1]' contains text 'Done! Computer Ðíäĸřìéŧên &amp; $p€cial€ t€k€n$ met ÁΠĪ’s has been created'.</msg>
-<status status="PASS" starttime="20190711 22:10:41.413" endtime="20190711 22:10:41.587"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:41.413" endtime="20190711 22:10:41.587"></status>
-</kw>
-<kw name="Close current browser" type="teardown">
-<kw name="Close Browser" library="SeleniumLibrary">
-<doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20190711 22:10:41.587" endtime="20190711 22:10:44.609"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:41.587" endtime="20190711 22:10:44.609"></status>
-</kw>
-<doc>Testing input fields for special characters
-Precondition:
-Add a computer screen is visible
-
-Expected result:
-New computer is added with special characters
-
-Test steps:</doc>
-<tags>
-<tag>exeptions</tag>
-<tag>Sadflow</tag>
-</tags>
-<status status="PASS" starttime="20190711 22:10:36.985" endtime="20190711 22:10:44.610" critical="yes"></status>
-</test>
-<test id="s1-t10" name="Test Case 10: Delete all added computers">
-<kw name="Open browser and navigate to provided url">
-<kw name="Open Browser" library="SeleniumLibrary">
-<doc>Opens a new browser instance to the given ``url``.</doc>
-<arguments>
-<arg>${URL}</arg>
-<arg>${BROWSER}</arg>
-</arguments>
-<msg timestamp="20190711 22:10:44.614" level="INFO">Opening browser 'IE' to base url 'http://computer-database.herokuapp.com/computers'.</msg>
-<status status="PASS" starttime="20190711 22:10:44.614" endtime="20190711 22:10:46.002"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:44.614" endtime="20190711 22:10:46.002"></status>
-</kw>
-<kw name="Delete all added computers">
-<kw name="Type computername 2 edited into searchfield">
-<kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
-<arg>id=searchbox</arg>
-<arg>${computerName2Edited}</arg>
-</arguments>
-<msg timestamp="20190711 22:10:46.002" level="INFO">Typing text 'Testcomputer' into text field 'id=searchbox'.</msg>
-<status status="PASS" starttime="20190711 22:10:46.002" endtime="20190711 22:10:46.697"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:10:47.697" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:10:46.697" endtime="20190711 22:10:47.697"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:46.002" endtime="20190711 22:10:47.697"></status>
-</kw>
-<kw name="Click &quot;Filter by name&quot;">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>id=searchsubmit</arg>
-</arguments>
-<msg timestamp="20190711 22:10:47.697" level="INFO">Clicking element 'id=searchsubmit'.</msg>
-<status status="PASS" starttime="20190711 22:10:47.697" endtime="20190711 22:10:48.252"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:10:49.253" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:10:48.252" endtime="20190711 22:10:49.253"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:47.697" endtime="20190711 22:10:49.253"></status>
-</kw>
-<kw name="Click computer 2 edited">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>//*[contains(text(),"${computerName2Edited}")]</arg>
-</arguments>
-<msg timestamp="20190711 22:10:49.253" level="INFO">Clicking element '//*[contains(text(),"Testcomputer")]'.</msg>
-<status status="PASS" starttime="20190711 22:10:49.253" endtime="20190711 22:10:49.787"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:10:50.788" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:10:49.787" endtime="20190711 22:10:50.788"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:49.253" endtime="20190711 22:10:50.788"></status>
-</kw>
-<kw name="Click delete and verify message">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>//*[@class="btn danger"]</arg>
-</arguments>
-<msg timestamp="20190711 22:10:50.788" level="INFO">Clicking element '//*[@class="btn danger"]'.</msg>
-<status status="PASS" starttime="20190711 22:10:50.788" endtime="20190711 22:10:51.411"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:10:52.414" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:10:51.411" endtime="20190711 22:10:52.414"></status>
-</kw>
-<kw name="Element Should Contain" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<arguments>
-<arg>//*[@id="main"]/div[1]</arg>
-<arg>Done! Computer has been deleted</arg>
-</arguments>
-<msg timestamp="20190711 22:10:52.582" level="INFO">Element '//*[@id="main"]/div[1]' contains text 'Done! Computer has been deleted'.</msg>
-<status status="PASS" starttime="20190711 22:10:52.414" endtime="20190711 22:10:52.582"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:10:53.583" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:10:52.582" endtime="20190711 22:10:53.583"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:50.788" endtime="20190711 22:10:53.583"></status>
-</kw>
-<kw name="Search computername special charaters">
-<kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
-<arguments>
-<arg>id=searchbox</arg>
-<arg>${computerSpecialCharacter}</arg>
-</arguments>
-<msg timestamp="20190711 22:10:53.583" level="INFO">Typing text 'Ðíäĸřìéŧên &amp; $p€cial€ t€k€n$ met ÁΠĪ’s' into text field 'id=searchbox'.</msg>
-<status status="PASS" starttime="20190711 22:10:53.583" endtime="20190711 22:10:54.384"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:53.583" endtime="20190711 22:10:54.384"></status>
-</kw>
-<kw name="Click &quot;Filter by name&quot;">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>id=searchsubmit</arg>
-</arguments>
-<msg timestamp="20190711 22:10:54.384" level="INFO">Clicking element 'id=searchsubmit'.</msg>
-<status status="PASS" starttime="20190711 22:10:54.384" endtime="20190711 22:10:54.980"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:10:55.984" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:10:54.980" endtime="20190711 22:10:55.984"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:54.384" endtime="20190711 22:10:55.984"></status>
-</kw>
-<kw name="Click computer with special characters">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>//*[contains(text(),"${computerSpecialCharacter}")]</arg>
-</arguments>
-<msg timestamp="20190711 22:10:55.984" level="INFO">Clicking element '//*[contains(text(),"Ðíäĸřìéŧên &amp; $p€cial€ t€k€n$ met ÁΠĪ’s")]'.</msg>
-<status status="PASS" starttime="20190711 22:10:55.984" endtime="20190711 22:10:56.541"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:10:57.542" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:10:56.541" endtime="20190711 22:10:57.542"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:55.984" endtime="20190711 22:10:57.542"></status>
-</kw>
-<kw name="Click delete and verify message">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>//*[@class="btn danger"]</arg>
-</arguments>
-<msg timestamp="20190711 22:10:57.542" level="INFO">Clicking element '//*[@class="btn danger"]'.</msg>
-<status status="PASS" starttime="20190711 22:10:57.542" endtime="20190711 22:10:58.157"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:10:59.160" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:10:58.157" endtime="20190711 22:10:59.160"></status>
-</kw>
-<kw name="Element Should Contain" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<arguments>
-<arg>//*[@id="main"]/div[1]</arg>
-<arg>Done! Computer has been deleted</arg>
-</arguments>
-<msg timestamp="20190711 22:10:59.318" level="INFO">Element '//*[@id="main"]/div[1]' contains text 'Done! Computer has been deleted'.</msg>
-<status status="PASS" starttime="20190711 22:10:59.160" endtime="20190711 22:10:59.318"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>1s</arg>
-</arguments>
-<msg timestamp="20190711 22:11:00.318" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20190711 22:10:59.318" endtime="20190711 22:11:00.318"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:57.542" endtime="20190711 22:11:00.318"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:10:46.002" endtime="20190711 22:11:00.318"></status>
-</kw>
-<kw name="Close current browser" type="teardown">
-<kw name="Close Browser" library="SeleniumLibrary">
-<doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20190711 22:11:00.318" endtime="20190711 22:11:03.354"></status>
-</kw>
-<status status="PASS" starttime="20190711 22:11:00.318" endtime="20190711 22:11:03.354"></status>
-</kw>
-<doc>Resets database to previous state
-Precondition:
-The computers in this tests have been added
-
-Expected result:
-The computers in this tests will be removed
-
-Test steps:</doc>
-<tags>
-<tag>Reset</tag>
-<tag>test1</tag>
-</tags>
-<status status="PASS" starttime="20190711 22:10:44.614" endtime="20190711 22:11:03.354" critical="yes"></status>
+<status status="PASS" starttime="20190714 21:05:57.661" endtime="20190714 21:06:01.739" critical="yes"></status>
 </test>
 <doc>This suite tests the herokuapp site to check
 if basic functionality works properly</doc>
-<status status="PASS" starttime="20190711 22:08:43.221" endtime="20190711 22:11:03.354"></status>
+<status status="PASS" starttime="20190714 21:05:57.395" endtime="20190714 21:06:01.739"></status>
 </suite>
 <statistics>
 <total>
-<stat pass="10" fail="0">Critical Tests</stat>
-<stat pass="10" fail="0">All Tests</stat>
+<stat pass="1" fail="0">Critical Tests</stat>
+<stat pass="1" fail="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="1" fail="0">Create</stat>
-<stat pass="1" fail="0">Delete</stat>
-<stat pass="3" fail="0">Edit</stat>
-<stat pass="2" fail="0">exeptions</stat>
-<stat pass="5" fail="0">Happyflow</stat>
-<stat pass="1" fail="0">Read</stat>
-<stat pass="1" fail="0">Reset</stat>
-<stat pass="4" fail="0">Sadflow</stat>
-<stat pass="1" fail="0">test1</stat>
+<stat pass="1" fail="0">Check</stat>
+<stat pass="1" fail="0">Happyflow</stat>
 </tag>
 <suite>
-<stat pass="10" fail="0" id="s1" name="Test 1">Test 1</stat>
+<stat pass="1" fail="0" id="s1" name="Test Suite 1">Test Suite 1</stat>
 </suite>
 </statistics>
 <errors>
